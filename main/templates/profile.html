@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Profile: {{username}}</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>My Profile</h1>
+    <form method="post">
+        <div class="form_group">
+            <label class="form_group_label">First Name: </label>
+            <input type="text" name="firstName" value={{firstName}}>
+        </div>
+        <div class="form_group">
+            <label class="form_group_errorlabel">{{ firstNameForgot }}</label>
+        </div>
+        <div class="form_group">
+            <label class="form_group_label">Last Name: </label>
+            <input type="text" name="lastName" value={{lastName}}>
+        </div>
+        <div class="form_group">
+            <label class="form_group_errorlabel">{{ lastNameForgot }}</label>
+        </div>
+        <div class="form_group">
+            <label class="form_group_label">E-Mail: </label>
+            <input type="text" name="email" value={{email}}>
+        </div>
+        <div class="form_group">
+            <label class="form_group_errorlabel">{{ emailFormatError }}</label>
+        </div>
+        <div class="form_group">
+            <label class="form_group_label">Username: </label>
+            <input type="text" name="username" value={{username}}>
+        </div>
+        <div class="form_group">
+            <label class="form_group_errorlabel">{{ usernameError }}</label>
+        </div>
+
+        <div class="form_group" id="addressDiv">
+            <label>Street:</label><br>
+            <input type="text" id="street" name="street"><br>
+            <label>House number:</label><br>
+            <input type="text" id="houseNumber" name="houseNumber"><br>
+            <label>Zip-code:</label><br>
+            <input type="text" id="zipCode" name="zipCode">
+        </div>
+
+        <input class="button" type="submit" name="change" value="Change">
+
+        
+    </form>
+    <a href="{{ url_for('public.changePassword') }}" class="buttonLink">
+        Change your password here
+     </a>
+</div>
+{% endblock %}

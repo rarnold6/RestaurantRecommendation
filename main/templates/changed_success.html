@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{type}} changed</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>You changed successfully your {{type}}!</h1>
+    {% if type == 'Mail' %}
+        <p>Check your Mail to confirm the change.</p>
+        <p>If you have confirmed, you can <a href="{{ url_for('authentication.login') }}">login</a> again!</p>
+    {% endif %}
+</div>
+
+{% endblock %}

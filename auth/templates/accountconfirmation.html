@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Account confirmed</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Your account is {% if verified == 1 %}already{% endif %} confirmed!!</h1>
+    <p>Thank you for your trust and enjoy your first experience when using this website.</p>
+    <p>Now you can <a href="{{ url_for('authentication.login') }}">login</a>!</p>
+</div>
+{% endblock %}

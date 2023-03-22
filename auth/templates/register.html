@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Register</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Register</h1>
+    <form class="login_form" method="post">
+        <div class="form_group">
+            <label class="form_group_label">First Name: </label>
+            <input type="text" name="firstName">
+        </div>
+        <div class="form_group">
+            <label class="form_group_errorlabel">{{ firstNameForgot }}</label>
+        </div>
+        <div class="form_group">
+            <label class="form_group_label">Last Name: </label>
+            <input type="text" name="lastName">
+        </div>
+        <div class="form_group">
+            <label class="form_group_errorlabel">{{ lastNameForgot }}</label>
+        </div>
+        <div class="form_group">
+            <label class="form_group_label">E-Mail: </label>
+            <input type="text" name="email">
+        </div>
+        <div class="form_group">
+            <label class="form_group_errorlabel">{{ emailFormatError }}</label>
+        </div>
+        <div class="form_group">
+            <label class="form_group_label">Username: </label>
+            <input type="text" name="username">
+        </div>
+        <div class="form_group">
+            <label class="form_group_errorlabel">{{ usernameError }}</label>
+        </div>
+        <div class="form_group">
+            <label class="form_group_label">Password: </label>
+            <input type="password" name="password">
+        </div>
+        <div class="form_group">
+            <label class="form_group_label">Confirm password: </label>
+            <input type="password" name="passwordVerification">
+        </div>
+        <div class="form_group">
+            <label class="form_group_errorlabel">{{ passwordError }}</label>
+        </div>
+        <input class="button" type="submit" name="register" value="Register">
+    </form>
+    
+    <p class="register_now">Already an account?<br>Then <a href="{{ url_for('authentication.login') }}">login</a>!</p>
+</div>
+
+{% endblock %}

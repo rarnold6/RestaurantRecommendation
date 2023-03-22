@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Register success</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Registered almost completed!!</h1>
+    <p>Check your Mail to confirm the registration.</p>
+    <p>If you have confirmed, you can <a href="{{ url_for('authentication.login') }}">login</a>!</p>
+</div>
+
+{% endblock %}

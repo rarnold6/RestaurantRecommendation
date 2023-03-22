@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Preferences sent</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Your preferences has been stored!</h1>
+    <p>Now you only have to wait until the admin of your trip is calculating the perfect restaurant.</p>
+    <p>Here you can go to the <a href="{{ url_for('public.homepage') }}">homepage</a>!</p>
+</div>
+{% endblock %}

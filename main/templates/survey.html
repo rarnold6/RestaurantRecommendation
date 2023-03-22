@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Survey</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src="{{ url_for('static', filename='script/survey.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% if not session['loggedin'] %} 
+        <p>If you have an account, you can <a href="{{ url_for('authentication.login') }}">login</a>!</p>
+    {% endif %}
+    <p>In order to be able to calculate the perfect restaurant,<br>please fill out the following form!</p>
+    <form class="login_form" method="post">
+        <div class="form_group">
+            <label class="form_group_label">Username:</label>
+            {% if session['loggedin'] %} 
+                <input type="text" value="{{ session['username'] }}" readonly="true">
+            {% else %}
+                <input type="text" name="username" >
+            {% endif %}
+        </div>
+        {% if notadmin %}
+            {% if dateNotDefined %}
+                <label>Confirm the proposed dates or change them if you have more time limits during a date.</label>
+                {% for item in rows %}
+                <div class="form_group">
+                    <label>From </label>
+                    <input type="datetime-local" id="startTime{{loop.index}}" name="startingTimes[]" value={{item[0]}} min={{item[0]}} max={{item[1]}} onchange="dateBorderCheck(this.id);">
+                    <label> until </label>
+                    <input type="datetime-local" id="endTime{{loop.index}}" name="endingTimes[]" value={{item[1]}} min={{item[0]}} max={{item[1]}} onchange="dateBorderCheck(this.id);">
+                    <input type="checkbox" id="checkboxConfirm{{loop.index}}" name="dateConfirm[]" value="{{loop.index}}" onclick="dateConfirm(this.id)">
+                    <label for="dateConfirm">Confirm Date.</label>
+                    <input type="checkbox" id="checkboxDelete{{loop.index}}" name="dateDelete[]" value="{{loop.index}}" onclick="dateDelete(this.id)">
+                    <label for="dateDelete">Busy at this time</label>
+                </div>
+                {% endfor %}
+            {% else %}
+                <label>The visit will be on the {{finalDate}} at {{time}}.</label>
+            {% endif %}
+        {% endif %}
+
+        <div class="form_group">
+            <input type="checkbox" id="checkboxGeoLocation" name="checkboxGeoLocation" onclick="locationCheck()">
+            <label for="checkboxGeoLocation">Use my geolocation instead of the address</label>
+
+            <div class="form_group" id="addressDiv" hidden>
+                <label>Street:</label>
+                <input type="text" id="streetInput" name="streetInput">
+                <label>House number:</label>
+                <input type="text" id="houseNumberInput" name="houseNumberInput">
+                <label>Zip-code:</label>
+                <input type="text" id="zipCodeInput" name="zipCodeInput">
+            </div>
+            <p id="x"></p>
+
+        </div>
+
+        <div class="form_group">
+            <label>Maximal Distance:</label><br>
+            <input type="number" name="distance" id="distance" value="5"><label> km</label>
+        </div>
+
+        <div class="form_group">
+            <label>Maximal Price:</label><br>
+            <input type="number" name="price" id="price" value="20"><label> €</label>
+        </div>
+
+        <div>
+            <label>Select the food categories you wanna have:</label>
+            <select name="foodCategory" id="foodCategory" onchange="selectCategories();">
+                <option value="Select">Please select</option>
+                <option value="Italian">Italian</option>
+                <option value="Indian">Indian</option>
+                <option value="German">German</option>
+                <option value="Portuguese">Portuguese</option>
+            </select>
+        </div>
+
+        <div id="placeholderSelectedValues">
+            <label>Selected categories: </label>
+
+        </div>
+
+
+
+
+
+        <div class="form_group">
+            <input class="buttonLink" type="submit" name="submitPreferences" value="Submit my preferences"> 
+        </div>
+        
+    </form>
+
+
+</div>
+{% endblock %}

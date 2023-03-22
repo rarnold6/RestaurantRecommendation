@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Planned Visits</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Your planned visits!</h1>
+    <table>
+        <tr>
+            <th>Label</th>
+            <th>Link</th>
+            <th>Date created</th>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{item[0]}}</td>
+            <td><a href="{{ url_for('public.plannedvisitID', visitid = item[1]) }}">{{ url_for('public.plannedvisitID', visitid = item[1]) }}</a></td>
+            <td>{{item[2]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

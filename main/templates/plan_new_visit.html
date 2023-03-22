@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>New Visit</title>
+<script type="text/javascript" src="{{ url_for('static', filename='script/newVisit.js') }}" defer></script>
+
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% if linkgenerated %}
+        <h1>Your Link to share:</h1>
+        <p>The following link you can share with the people you are going out with.<br>
+            Copy it and share it!<br>
+            Follow this link to plan your visit and answer a few question.
+            <a href="{{ url_for('public.plannedvisitID', visitid = linkid) }}">{{ link }}</a>
+        </p>
+
+
+    {% else %}
+        <h1>Plan New Visit</h1>
+        <p>Specify on this page the general about your planned trip.</p>
+        <form method="post">
+            <div class="form_group">
+                <label class="form_group_label">Label your visit: </label>
+                <input type="text" name="labelVisit">
+                <label class="form_group_errorlabel">{{ labelVisit }}</label>
+            </div>
+
+            <input type="checkbox" name="dateDefined" id="checkboxDateDefined" onclick="myFunction()">
+            <label for="dateDefined">Date and time already defined</label><br>
+
+            <div style="display: none;" id="divDateDefined">
+                <input type="datetime-local" id="meeting-time" name="meeting-time" value={{now}} min={{min}} max={{max}}><br>
+            </div>
+            <div id="divProDate">
+                <div id="divProposingDates">
+                    <label>Enter possible Timeslots to choose from for your group:</label><br>
+                    <div id="divProposedDate1">
+                        <label>From</label>
+                        <input type="datetime-local" id="meeting-time-from1" name="meeting-time-from[]" value={{now}} min={{min}} max={{max}} onchange="dateChange(1)">
+                        <label>until</label>
+                        <input type="datetime-local" id="meeting-time-until1" name="meeting-time-until[]" value={{now}} min={{min}} max={{max}}> <br>
+                    </div>
+                </div>
+                <button type="button" onclick="addTimeslot()">Add timeslot</button>
+            </div>
+
+            <input class="buttonLink" type="submit" name="linkGenerate" value="Generate Link for friends"> 
+        </form>
+    {% endif %}
+
+</div>
+
+
+
+{% endblock %}

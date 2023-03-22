@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Homepage</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Homepage</h1>
+    <p class="essay">You are a group of people and willing to eat out in the next time?<br>
+    But you do not not what the group wants to eat or where to go?<br>
+    Then use our website to get the best restaurant based on the needs of every group member!
+    </p>
+    <form>
+        <a href="{{ url_for('public.plan_new_visit') }}" class="buttonLink">
+           Plan your visit
+        </a>
+    </form>
+</div>
+{% endblock %}

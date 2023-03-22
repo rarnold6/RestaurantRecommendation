@@ -1,0 +1,144 @@
+body{
+    margin: 0;
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    background-color: lightgrey;
+    color: black;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow:hidden;
+    text-align: center;
+}
+
+h1{
+    font-size: 18px;
+}
+
+#navbar{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(0, 76, 255);
+    color: white;
+
+}
+
+#navbar ul{
+    padding: 0;
+    list-style: none;
+}
+
+#navbar li{
+    display: inline;
+}
+
+.nav_left{
+    float: left;
+}
+
+.nav_right{
+    float: right;
+}
+
+#navbar a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding-right: 15px;
+}
+
+#navbar a:hover{
+    color: grey;
+}
+
+#main_footer{
+    position: absolute;
+    width: 100%;
+    padding-left: 10px;
+    background-color: gray;
+    margin-top: 30px;
+}
+
+.centeredContent{
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.container h1{
+    text-align: center;
+}
+
+.login_form{
+    padding: 10px;
+}
+
+.login_form.form_group{
+    margin-bottom: 10px;
+    
+}
+
+.form_group_label{
+    display: block;
+    text-align: center;
+}
+
+.form_group_errorlabel{
+    display: block;
+    text-align: center;
+    color: red;
+    font-size: small;
+}
+
+.login_form input[type="text"], input[type="password"]{
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 4px;
+    width: 50%;
+}
+
+.login_form input[type="submit"]{
+    display: block;
+    margin: auto;
+    padding: 6px;
+    background-color: rgb(0, 76, 255);
+    color: white;
+    border: none;
+}
+.login_form input[type="submit"]:hover{
+    color: grey;
+}
+.register_now{
+    line-height: 1em;
+    text-align: center;
+}
+
+.buttonLink{
+    background-color: rgb(0, 76, 255);
+    color: white;
+    border: none;
+    padding: 5px;
+    font-size: large;
+    text-decoration: none;
+}
+
+.buttonLink:hover{
+    color: grey;
+}
+
+.essay{
+    font-size: large;
+}
+
+table,tr,td, th{
+    border: 1px solid;
+}
+
+table{
+    width: 100%;
+}
